@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ConversationList from "./components/ConversationList";
+import ConversationPage from "./components/ConversationPage";
+import FileUploader from "./components/FileUploader";
 
 function App() {
+
+  const [conversations, setConversations] = React.useState([]);
+
+  const handleFileUpload = (jsonData) => {
+    // log the data to the console
+    console.log('jsonData', jsonData);
+    setConversations(conversations.concat(jsonData));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <FileUploader onFileSelected={handleFileUpload} />
+        <Routes>
+        <Route path="/" element={<ConversationList conversations={conversations} />} />
+          <Route
+            path="/conversation/:id"
+            element={<ConversationPage conversations={conversations} />}
+          />
+           </Routes>
+      </div>
+    </Router>
   );
 }
 

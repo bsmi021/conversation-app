@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# ChatGPT History Viewer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a ChatGPT chat history viewer that allows users to view their chat history offline. The application requires users to download their chat history from ChatGPT in the form of a `conversations.json` file, which can be found in the downloaded zip file.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+1. Clone the repository to your local machine
+1. Run npm install to install all dependencies
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Run npm start to start the application
+1. Click on the Upload ChatGPT History button and select your conversations.json file
+1. Once uploaded, you will be taken to the Conversation List page, where you can see a list of all conversations
+1. Click on a conversation to view its details on the Conversation Page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Application Flow
 
-### `npm test`
+```mermaid
+sequenceDiagram
+participant User
+participant App
+participant FileUploader
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+User->>App: Open ChatGPT Chat History Viewer
+App->>FileUploader: Click on "Upload ChatGPT History" button
+FileUploader->>User: Choose "conversations.json" file
+FileUploader->>App: Update conversation list
+App->>User: Display conversation list
+User->>App: Click on conversation
+App->>ConversationPage: Display conversation
+ConversationPage->>Conversation: Retrieve messages
+Conversation->>ConversationPage: Respond with messages
+ConversationPage->>App: Display messages
+```
 
-### `npm run build`
+## Step-by-Step Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Open the ChatGPT website and log in to your account
+1. Go to the Settings menu and select Download Chat History
+1. Download the zip file and extract its contents to your local machine
+1. Open the ChatGPT Chat History Viewer application
+1. Click on the Upload ChatGPT History button
+1. Select the conversations.json file from the extracted zip folder
+1. Wait for the file to upload
+1. Once uploaded, you will be taken to the Conversation List page, where you can see a list of all conversations
+1. Click on a conversation to view its details on the Conversation Page
+1. Use the navigation buttons to switch between conversations
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- View all conversations
+- View all messages in a conversation
 
-### `npm run eject`
+## Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Acknowledgments
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [ChatGPT](https://chat.openai.com/)
